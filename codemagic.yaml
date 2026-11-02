@@ -5,15 +5,12 @@ workflows:
     instance_type: mac_mini_m1
     environment:
       node: 18
-      groups:
-        - google_play
     scripts:
       - name: Install dependencies
         script: |
-          npm install --legacy-peer-deps
+          cd Reacto-Messager && npm install --legacy-peer-deps
       - name: Build Android APK
         script: |
-          cd android && chmod +x gradlew && ./gradlew assembleRelease
+          cd Reacto-Messager/android && chmod +x gradlew && ./gradlew assembleRelease
     artifacts:
-      - android/app/build/outputs/apk/release/*.apk
-
+      - "**/build/outputs/apk/release/*.apk"
